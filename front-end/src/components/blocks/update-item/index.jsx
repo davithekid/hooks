@@ -16,15 +16,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue
-} from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
@@ -68,6 +59,7 @@ export function ModalUpdateItem({ item, onEdit }) {
               Utilize esse modal para editar um item da lista.
             </DialogDescription>
           </DialogHeader>
+
           <div className="grid gap-4 py-4">
             <div className="grid gap-2">
               <Label htmlFor="title">Título</Label>
@@ -77,23 +69,18 @@ export function ModalUpdateItem({ item, onEdit }) {
                 onChange={(e) => setTitulo(e.target.value)}
               />
             </div>
+
             <div className="grid gap-2">
               <Label htmlFor="status">Status</Label>
-              <Select value={status} onValueChange={setStatus}>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecione o status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectGroup>
-                    <SelectLabel>Status</SelectLabel>
-                    <SelectItem value="Ativo">Ativo</SelectItem>
-                    <SelectItem value="Pendente">Pendente</SelectItem>
-                    <SelectItem value="Concluído">Concluído</SelectItem>
-                  </SelectGroup>
-                </SelectContent>
-              </Select>
+              <Input
+                id="status"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+                placeholder="Digite o status"
+              />
             </div>
           </div>
+
           <DialogFooter>
             <DialogClose asChild>
               <Button variant="outline" type="button">
